@@ -1,8 +1,7 @@
 // api/heroes.js
-
 var express     = require('express');
 var router      = express.Router();
-var heroes      = require('../models/hero');
+var Hero      = require('../models/hero');
 var mongoose    = require('mongoose');
 
 // Index
@@ -55,6 +54,7 @@ router.post('/',
         return res.json({success:false, message:err});
       }
       else {
+
         res.locals.lastId = hero?hero.id:0;
         next();
       }
