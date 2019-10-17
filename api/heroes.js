@@ -55,6 +55,7 @@ router.post('/',
       }
       else {
 
+        
         res.locals.lastId = hero?hero.id:0;
         next();
       }
