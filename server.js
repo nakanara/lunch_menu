@@ -53,6 +53,8 @@ app.get("/hello/:nameParam", function(req,res){
 
 // API
 app.use('/api/heroes', require('./api/heroes'));
+// API
+app.use('/api/lunch_menu', require('./api/lunch_menu'));
 
 
 // Server

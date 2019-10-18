@@ -13,4 +13,20 @@ var storeSchma  = mongoose.Schema({
     uri: {
         type: String,
     },
-})
+    desc: {
+        type: String,
+    },
+    // 유형 정의 필요.
+    lat: {
+        type:Number,    
+    },
+    lng: {
+        type:Number,
+    },
+    tags: {
+        type: String,
+    }
+});
+
+let Store   = mongoose.model('store', storeSchma);
+module.exports = Store;
