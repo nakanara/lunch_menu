@@ -3,7 +3,6 @@ var express     = require('express');
 var router      = express.Router();
 var Store       = require('../models/store');
 var mongoose    = require('mongoose');
-2var $           = require('jquery');
 
 // Index
 router.get('/',
