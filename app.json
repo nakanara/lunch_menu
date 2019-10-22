@@ -6,5 +6,8 @@
     "random",
     "html",
     "node"
-  ]
+  ],
+  "website": "http://github.com/nakanara",
+  "repository": "https://github.com/nakanara/lunch_menu",
+  "logo": "https://small-sharp-tool.com/logo.svg"
 }
