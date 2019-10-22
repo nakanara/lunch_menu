@@ -24,10 +24,12 @@ const dbconfig = {
   auth: { authSource: "admin" },
 };
 
-console.log(dbconfig);
+console.log(flag);
 if(flag == 'local') {
+  console.log('local');
   mongoose.connect(MONGO_DB_URI, dbconfig);
 } else {
+  console.log('dev');
   mongoose.connect(MONGO_DB_URI);
 }
 var db = mongoose.connection;
