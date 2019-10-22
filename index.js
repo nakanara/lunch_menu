@@ -10,7 +10,7 @@ const config   = require('./config.json');
 
 var MONGO_DB_URI = process.env.MONGODB_URI || config['local']['MONGODB_URI'];
 // Server
-var PORT = process.env.WEB_PORT || config['local']['PORT'];// || 3000;
+var PORT = process.env.PORT || config['local']['PORT'];// || 3000;
 var flag = process.env.RUNMODE || 'local';
 
 
