@@ -19,6 +19,10 @@ const dbconfig = {
   autoIndex: false,
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  auth : {
+    user: process.env.MONGODB_USER || config['local']['MONGODB_USER'],
+    password: process.env.MONGODB_PW || config['local']['MONGODB_PW'],
+  }
 };
 
 mongoose.connect(MONGO_DB_URI, dbconfig);
