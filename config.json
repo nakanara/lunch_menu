@@ -1,9 +1,9 @@
 {
-    "test": {
+    "local": {
         "PORT": 3000,
         "MONGODB_URI": "mongodb://localhost:27017/lunch_menu"
     },
-    "development": {
+    "dev": {
         "PORT": 3000,
         "MONGODB_URI": "mongodb://localhost:27017/lunch_menu"
     }
