@@ -10,7 +10,7 @@ const config = require('./config.json');
 
 var MONGO_DB_URI = process.env.MONGODB_URI || config['local']['MONGODB_URI'];
 // Server
-var MONGO_PORT = process.env.PORT || config['local']['PORT'];;
+var MONGO_PORT = process.env.MONGODB_PORT || config['local']['PORT'];;
 
 // Database
 mongoose.Promise = global.Promise;
