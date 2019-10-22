@@ -10,7 +10,7 @@ const config = require('./config.json');
 
 var MONGO_DB_URI = process.env.MONGODB_URI || config['local']['MONGODB_URI'];
 // Server
-var MONGO_PORT = process.env.MONGODB_PORT || config['local']['PORT'];;
+var MONGODB_PORT = process.env.MONGODB_PORT || config['local']['PORT'];;
 
 // Database
 mongoose.Promise = global.Promise;
@@ -60,6 +60,6 @@ app.use('/api/lunch_menu', require('./api/lunch_menu'));
 
 
 
-app.listen(port, function(){
-  console.log('listening on port:' + port);
+app.listen(MONGODB_PORT, function(){
+  console.log('listening on port:' + MONGODB_PORT);
 });
