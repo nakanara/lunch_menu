@@ -11,6 +11,8 @@ const config   = require('./config.json');
 var MONGO_DB_URI = process.env.MONGODB_URI || config['local']['MONGODB_URI'];
 // Server
 var PORT = process.env.WEB_PORT || config['local']['PORT'];// || 3000;
+var flag = process.env.RUNMODE || 'local';
+
 
 // Database
 mongoose.Promise = global.Promise;
@@ -23,7 +25,11 @@ const dbconfig = {
 };
 
 console.log(dbconfig);
-mongoose.connect(MONGO_DB_URI, dbconfig);
+if(flag == 'local') {
+  mongoose.connect(MONGO_DB_URI, dbconfig);
+} else {
+  mongoose.connect(MONGO_DB_URI);
+}
 var db = mongoose.connection;
 db.once('open', function () {
    console.log('DB connected!');
