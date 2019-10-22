@@ -5,7 +5,7 @@ var app        = express();
 var path       = require('path');
 var mongoose   = require('mongoose');
 var bodyParser = require('body-parser');
-const config = require('./config.json');
+const config   = require('./config.json');
 
 
 var MONGO_DB_URI = process.env.MONGODB_URI || config['local']['MONGODB_URI'];
@@ -19,12 +19,10 @@ const dbconfig = {
   autoIndex: false,
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  auth : {
-    user: process.env.MONGODB_USER || config['local']['MONGODB_USER'],
-    password: process.env.MONGODB_PW || config['local']['MONGODB_PW'],
-  }
+  auth: { authSource: "admin" },
 };
 
+console.log(dbconfig);
 mongoose.connect(MONGO_DB_URI, dbconfig);
 var db = mongoose.connection;
 db.once('open', function () {
@@ -61,7 +59,6 @@ app.get("/hello/:nameParam", function(req,res){
 app.use('/api/heroes', require('./api/heroes'));
 // API
 app.use('/api/lunch_menu', require('./api/lunch_menu'));
-
 
 
 app.listen(PORT, function(){

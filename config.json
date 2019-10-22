@@ -1,9 +1,7 @@
 {
     "local": {
         "PORT": 3000,
-        "MONGODB_URI": "mongodb://localhost:27017/lunch_menu",
-        "MONGODB_USER": "lunch_menu",
-        "MONGODB_PW": "lunch_menu1!"
+        "MONGODB_URI": "mongodb://lunch_menu:lunch_menu1!@localhost:27017/lunch_menu"
     },
     "dev": {
         "PORT": 3000,
