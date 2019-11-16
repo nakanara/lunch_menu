@@ -12,18 +12,19 @@
     <script type="text/javascript" src="/jslib/fontawesome.js"></script> 
     <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></link>
     
-
     <!-- services와 clusterer, drawing 라이브러리 불러오기 -->
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fa8cdbb11397386a9cd572fbf1281ed5&libraries=services,clusterer,drawing"></script>
 </header>
 
 <body>
     
-    <div class="container">
-        <div class="row">
-            <h1>map</h1>
+    <div class="container" >
+        <div class="row" id='vue'>
+            <h1>{{title}}</h1>
+            <my-title></my-title>
         </div>
         
         <div class="row">
@@ -53,12 +54,11 @@
         </div>
 
         <div class="row">
-
+            <label class="btn btn-default" id='btnAdd'>추가</label>
         </div>
 
         <div class="row">
-            
-            <form id='f'>
+            <form id='f' style="display: none;">
                 <div class="form-group">
                     <label for="inputName">상호</label><input id="inputName" name="name" placeholder="이름을 입력하세요">
                 </div>
@@ -91,6 +91,19 @@
         
         
     </div>    
+
+    <template id='tmpResultTable'>
+        <table class="table">
+            <thead>
+                <th>NO</th>
+            </thead>
+            <tbody>
+                <tr v-for="itme in tabledata">
+                    <td>{{item.name}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </template>
     <script type="text/javascript" src="map.js"></script>
 </body>
 </html>

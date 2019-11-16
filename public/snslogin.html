@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
+  <title>Login Demo - Kakao JavaScript SDK</title>
+  <script type="text/javascript" src="/jslib/jquery-3.4.1.min.js"></script>
+  <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
+</head>
+<body>
+<a id="kakao-login-btn"></a>
+<a href="javascript:logout();">로그아웃</a>
+<a id="custom-login-btn" href="javascript:custionLogin()">로그인</a>
+<script type='text/javascript'>
+  //<![CDATA[
+    // 사용할 앱의 JavaScript 키를 설정해 주세요.
+    Kakao.init('fa8cdbb11397386a9cd572fbf1281ed5');
+    // 카카오 로그인 버튼을 생성합니다.
+    Kakao.Auth.createLoginButton({
+      container: '#kakao-login-btn',
+      success: function(authObj) {
+        alert(JSON.stringify(authObj));
+        console.log(JSON.stringify(authObj));
+        /*
+        {"access_token":"hAPTAD0gCOzl4WjnpzajTk84yAadDReHp-6RHgo9duQAAAFuEs0b3g","token_type":"bearer","refresh_token":"mP6AE_xjSSXXAorARr5m61xXngd_PjmCAbsYIQo9duQAAAFuEs0b3A","expires_in":7199,"scope":"profile","refresh_token_expires_in":5183999}
+        */
+      },
+      fail: function(err) {
+         alert(JSON.stringify(err));
+      }
+    });
+
+    function custionLogin(){
+      Kakao.Auth.login({
+        success: function(authObj) {
+        alert(JSON.stringify(authObj));
+        console.log(JSON.stringify(authObj));
+        /*
+        {"access_token":"Evbgj63vPOZBsg1pwFsg4KFIuztRwkJclVXQGwo9dZsAAAFuEsyQ8A","token_type":"bearer","refresh_token":"wr0b61ZuPoYVvVx0ycrI9ss-z-EMnfH0rGuthwo9dZsAAAFuEsyQ7Q","expires_in":7199,"scope":"profile","refresh_token_expires_in":5183999}
+        */
+       $.ajax({
+         url : 'http://kapi.kakao.com/v2/user/me',
+         method : 'POST',
+         contentType: 'application/x-www-form-urlencoded;charset=utf-8',
+         data : {
+           Bearer : authObj.access_token
+         },
+         success: function(result){
+           console.log("success");
+           console.log(result);
+         }, 
+         fail: function(result){
+           console.log('error');
+           console.log(this);
+         }
+       })
+      },
+      fail: function(err) {
+         alert(JSON.stringify(err));
+      }
+      });
+    }
+    function logout(){
+      Kakao.Auth.logout();
+    }
+  //]]>
+</script>
+
+</body>
+</html>
